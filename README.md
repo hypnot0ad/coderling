@@ -36,7 +36,7 @@ Open http://localhost:1313/coderling/. The templates and all local links support
 3. Select **main** and **/docs**, then **Save**.
 4. Wait for the Pages deployment to finish. GitHub will show the actual published URL; the intended URL is https://hypnot0ad.github.io/coderling/.
 
-The repository is private. GitHub Pages availability depends on the account plan; if Settings → Pages asks for an upgrade or a public repository, the owner must choose how to proceed. Do not make the repository public just to enable hosting without the owner's decision. This project does not change visibility, purchase a plan, or require students to sign in.
+The repository owner made the repository public on 2026-09-08. GitHub Pages is now available. Students do not need to sign in.
 
 No pre-existing workflow was available to run. This repository uses committed static output and GitHub's branch deployment, so no custom Actions workflow is required. After each content change, rebuild, run the checker, and commit the updated source and `docs/` together.
 
@@ -48,4 +48,4 @@ The tutorial's automatic English transcript and selected video frames were revie
 
 ## Hosting status observed on 2026-09-08
 
-The repository’s Settings → Pages screen explicitly displayed “Upgrade or make this repository public to enable Pages.” Hosting is currently blocked by the account/repository eligibility setting. No visibility or billing change was made.
+The initial private-repository Pages restriction was resolved by the owner. The repository is now public and its Pages settings allow branch deployment. The site is configured for `main` → `/docs`.

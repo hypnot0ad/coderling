@@ -69,3 +69,7 @@ Guided multi-page organization is inspired by https://splunk.github.io/observabi
 ## Hosting status observed on 2026-09-08
 
 The repository’s Settings → Pages screen explicitly displayed “Upgrade or make this repository public to enable Pages.” Hosting is currently blocked by the account/repository eligibility setting. No visibility or billing change was made.
+
+## Follow-up repository status
+
+After the owner’s update, the repository was observed as Public and Pages allowed branch deployment. The initial restriction recorded above is historical. The owner also enabled browser file uploads.
