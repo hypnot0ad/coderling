@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if not .IsHome }}{{ .Title }} · {{ end }}Coderling</title>
+<meta name="description" content="{{ .Description | default "Practical Scratch workshops. Make something, test it, and make it your own." }}">
+<link rel="stylesheet" href="{{ "assets/style.css" | relURL }}">
+</head>
+<body>
+<a class="skip" href="#main">Skip to lesson</a>
+<header><a class="brand" href="{{ "" | relURL }}">coderling<span>Scratch workshops</span></a><a class="editor" href="https://scratch.mit.edu/projects/editor/">Open Scratch ↗</a></header>
+<div class="shell">
+<nav class="sidebar" aria-label="Workshop steps">
+<p class="eyebrow">MAKE · TEST · EXPLORE</p>
+<a href="{{ "workshops/memory-match/" | relURL }}">Memory match</a>
+<ol>{{ with site.GetPage "/workshops/memory-match" }}{{ range .RegularPages.ByWeight }}<li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} aria-current="page"{{ end }}>{{ .Title }}</a></li>{{ end }}{{ end }}</ol>
+<p class="small">Take your time. Save at each checkpoint.</p>
+</nav>
+<main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
+</div>
+<footer>Made for curious coders. No account needed. <a href="{{ "workshops/memory-match/#credits" | relURL }}">Workshop credits</a></footer>
+</body></html>
