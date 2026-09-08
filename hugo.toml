@@ -1,0 +1,9 @@
+baseURL = 'https://hypnot0ad.github.io/coderling/'
+languageCode = 'en'
+title = 'Coderling'
+publishDir = 'docs'
+disableKinds = ['taxonomy', 'term', 'RSS', 'sitemap']
+[markup.highlight]
+  codeFences = false
+[markup.goldmark.renderer]
+  unsafe = false
