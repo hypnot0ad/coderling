@@ -1,0 +1,39 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Find a match · Coderling</title><meta name=description content="Practical Scratch workshops. Make something, test it, and make it your own."><link rel=stylesheet href=/coderling/assets/style.css></head><body><a class=skip href=#main>Skip to lesson</a><header><a class=brand href=/coderling/>coderling<span>Scratch workshops</span></a><a class=editor href=https://scratch.mit.edu/projects/editor/>Open Scratch ↗</a></header><div class=shell><nav class=sidebar aria-label="Workshop steps"><p class=eyebrow>MAKE · TEST · EXPLORE</p><a href=/coderling/workshops/memory-match/>Memory match</a><ol><li><a href=/coderling/workshops/memory-match/01-setup/>Get ready</a></li><li><a href=/coderling/workshops/memory-match/02-costumes/>Draw the cards</a></li><li><a href=/coderling/workshops/memory-match/03-deck/>Pack a deck</a></li><li><a href=/coderling/workshops/memory-match/04-deal/>Deal eight cards</a></li><li><a href=/coderling/workshops/memory-match/05-flip/>Turn over two</a></li><li><a href=/coderling/workshops/memory-match/06-match/ aria-current=page>Find a match</a></li><li><a href=/coderling/workshops/memory-match/07-challenges/>Make it yours</a></li><li><a href=/coderling/workshops/memory-match/08-wrap-up/>Play, test, and save</a></li></ol><p class=small>Take your time. Save at each checkpoint.</p></nav><main id=main tabindex=-1><article><p class=eyebrow>SCRATCH 3 · MEMORY MATCH</p><h1>Find a match</h1><p>A <strong>broadcast</strong> sends a named message to every sprite and clone. Each can have a <code>when I receive</code> script that responds.</p><h2 id=predict>Predict</h2><p>When two pictures do not match, should cards matched on an earlier turn close too?</p><h2 id=build-compare-the-pair>Build: compare the pair</h2><ol><li>Select <strong>Card</strong>. In Events, drag a <code>broadcast [message1] and wait</code> block. Open its message menu and choose <strong>New message</strong>. Create <code>pair found</code>. Do the same to create <code>turn back</code> and <code>win</code>. The names must match in senders and receivers.</li><li>Replace the click script from step 5 with this complete version. The comparison, wait, broadcasts, and reset all belong in the <strong>else</strong> branch for the second choice.</li></ol><pre><code class=language-text>when this sprite clicked
+if &lt;&lt;(flip count) &lt; (2)&gt; and &lt;&lt;(flip) = (0)&gt; and &lt;(matched) = (0)&gt;&gt;&gt; then
+    set [flip] to (1)
+    switch costume to ((card ID) + (1))
+    change [flip count] by (1)
+    if &lt;(flip count) = (1)&gt; then
+        set [first card] to (card ID)
+    else
+        set [second card] to (card ID)
+        wait (1.5) seconds
+        if &lt;(first card) = (second card)&gt; then
+            change [matches] by (1)
+            broadcast [pair found] and wait
+        else
+            wait (0.2) seconds
+            broadcast [turn back] and wait
+        end
+        set [flip count] to (0)
+        if &lt;(matches) = (4)&gt; then
+            broadcast [win]
+        end
+    end
+end
+</code></pre><p>Use <code>broadcast … and wait</code> for the two pair messages. It lets the cards finish responding before the next turn opens. <code>flip count</code> stays 2 during the pause, which stops a third card opening.</p><h2 id=build-tell-the-cards-what-to-do>Build: tell the cards what to do</h2><ol start=3><li>Still on <strong>Card</strong>, add these two separate scripts:</li></ol><pre><code class=language-text>when I receive [pair found]
+if &lt;(flip) = (1)&gt; then
+    set [matched] to (1)
+end
+</code></pre><pre><code class=language-text>when I receive [turn back]
+if &lt;&lt;(flip) = (1)&gt; and &lt;(matched) = (0)&gt;&gt; then
+    set [flip] to (0)
+    switch costume to [card back]
+end
+</code></pre><p>A matched card keeps <code>flip = 1</code> and <code>matched = 1</code>. It stays visible and will not count as a new choice. The hidden original has <code>flip = 0</code>, so it ignores both messages.</p><ol start=4><li>Test one matching pair and one different pair now. Matches should stay open. Different pictures should close after about 1.7 seconds. <code>matches</code> increases only for a new pair.</li></ol><h2 id=build-celebrate>Build: celebrate</h2><ol start=5><li>Paint a new sprite named <strong>Win</strong>. Use the text tool to write <code>You found all four pairs!</code>. Keep the text about 300 pixels wide.</li><li>On <strong>Win</strong>, add these two scripts. Find <code>go to [front] layer</code> in Looks.</li></ol><pre><code class=language-text>when green flag clicked
+hide
+go to x: (0) y: (-130)
+</code></pre><pre><code class=language-text>when I receive [win]
+go to [front] layer
+show
+</code></pre><ol start=7><li>Hide the test monitors except <code>matches</code>. Save.</li></ol><h2 id=check-it-works>Check it works</h2><ul><li>Reveal two different pictures. Try a third card during the pause: it stays closed. The first two close and you can choose again.</li><li>Find a pair. It stays face up and <code>matches</code> increases by 1. Clicking it again does nothing.</li><li>Find all four pairs. The Win text appears and <code>matches</code> is 4.</li><li>Press the flag. Win hides, matches returns to 0, and eight card backs appear. Restart once more while a pair is waiting; the old turn must not affect the new board.</li></ul><h2 id=if-something-goes-wrong>If something goes wrong</h2><table><thead><tr><th>What you see</th><th>What to check</th><th>Try this</th></tr></thead><tbody><tr><td>Old matches turn back over</td><td>The receiver does not check matched</td><td>Put both <code>flip = 1</code> and <code>matched = 0</code> inside the turn-back condition.</td></tr><tr><td>The first card closes before you choose a second</td><td>The wait and comparison are outside else</td><td>Move them into the second-choice else branch, as shown.</td></tr><tr><td>Win never appears</td><td>The message name or total is wrong</td><td>Use <code>win</code> on both sprites and test <code>matches = 4</code> after resolving a pair.</td></tr><tr><td>A third card opens during the pause</td><td>Flip count resets too early</td><td>Reset it after both message branches have finished.</td></tr></tbody></table><h2 id=why-it-works>Why it works</h2><p>Shared values describe the turn. Local values describe each card. Broadcasts let each card update itself. Why does the turn-back receiver need to ask two questions?</p><hr><p>Source: <a href="https://www.youtube.com/watch?v=l0lIGWz4yKU&amp;t=657s">How to make a memory game in scratch</a> by smart kiddos. Messages are renamed for clarity; waiting for receivers and checking victory after each resolved turn are reliability adaptations.</p><p><a href=../05-flip/>← Previous</a> · <a href=../>Overview</a> · <a href=../07-challenges/>Next →</a></p></article></main></div><footer>Made for curious coders. No account needed. <a href=/coderling/workshops/memory-match/#credits>Workshop credits</a></footer></body></html>
