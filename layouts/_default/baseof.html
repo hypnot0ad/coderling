@@ -16,7 +16,21 @@
 <ol>{{ with site.GetPage "/workshops/memory-match" }}{{ range .RegularPages.ByWeight }}<li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} aria-current="page"{{ end }}>{{ .Title }}</a></li>{{ end }}{{ end }}</ol>
 <p class="small">Take your time. Save at each checkpoint.</p>
 </nav>
-<main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
+<main id="main" tabindex="-1">{{ block "main" . }}{{ end }}
+<aside class="feedback" aria-labelledby="feedback-title">
+<details>
+<summary id="feedback-title">Something unclear? Share feedback about this page</summary>
+<form class="feedback-form" action="https://github.com/hypnot0ad/coderling/issues/new" method="get" target="_blank" data-page-title="{{ .Title }}">
+<label for="feedback-message">What went wrong, or what could be clearer?</label>
+<textarea id="feedback-message" name="body" rows="5" required placeholder="Tell us where you got stuck and what you expected to happen."></textarea>
+<input type="hidden" name="title" value="Page feedback: {{ .Title }}">
+<p class="feedback-help">Your feedback will open as a new GitHub issue for you to review and submit.</p>
+<button type="submit">Continue to GitHub ↗</button>
+</form>
+</details>
+</aside>
+</main>
 </div>
 <footer>Made for curious coders. No account needed. <a href="{{ "workshops/memory-match/#credits" | relURL }}">Workshop credits</a></footer>
+<script src="{{ "assets/feedback.js" | relURL }}"></script>
 </body></html>

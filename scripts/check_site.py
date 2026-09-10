@@ -39,5 +39,10 @@ for path in lessons.glob('*/index.html'):
         if text not in s:errors.append(f'{path}: missing {text}')
 if len(list(lessons.glob('*/index.html'))) != 8:errors.append('Expected eight lesson stages')
 if not (DOCS/'.nojekyll').is_file():errors.append('Missing docs/.nojekyll')
+for path,page in pages.items():
+    s=path.read_text()
+    for text in ('Something unclear? Share feedback about this page','feedback-message','https://github.com/hypnot0ad/coderling/issues/new'):
+        if text not in s:errors.append(f'{path}: missing feedback control: {text}')
+if not (DOCS/'assets'/'feedback.js').is_file():errors.append('Missing feedback script')
 if errors:print('\n'.join(errors));sys.exit(1)
 print(f'PASS: {len(pages)} HTML pages; internal links, assets, anchors, eight lesson stages, credits and navigation.')
