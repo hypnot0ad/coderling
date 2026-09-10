@@ -50,6 +50,10 @@ The tutorial's automatic English transcript and selected video frames were revie
 
 - Allow students to submit feedback without a GitHub account. Add a rate-limited Cloudflare Worker endpoint that validates submissions and creates issues through a narrowly scoped GitHub App or bot credential stored only on the server. Include abuse protection and guidance that students must not enter personal information. Until then, the feedback form opens GitHub's issue form and requires the student to sign in before submitting.
 
+## License and contributions
+
+Copyright © 2026 Coderling Projects. The source is available for inspection, personal learning, live non-commercial classroom use, and proposing contributions. Copying, redistribution, adaptation, hosting, and commercial reuse require prior written permission. See [LICENSE](LICENSE) for the complete terms and [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes.
+
 ## Hosting status observed on 2026-09-08
 
 The initial private-repository Pages restriction was resolved by the owner. The repository is now public and its Pages settings allow branch deployment. The site is configured for `main` → `/docs`.

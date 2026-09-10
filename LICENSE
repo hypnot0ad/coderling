@@ -1,0 +1,80 @@
+Coderling Source-Available Educational Use License
+Version 1.0, 10 September 2026
+
+Copyright (c) 2026 Coderling Projects. All rights reserved.
+
+1. Definitions
+
+"Project" means the Coderling source code, workshop text, documentation,
+design, and other original material in this repository, excluding third-party
+material identified in the Project.
+
+"Use" means viewing the Project and accessing or presenting the unmodified
+workshop for personal learning or live, non-commercial classroom instruction.
+
+2. Permission
+
+Coderling Projects grants you a limited, revocable, non-exclusive,
+non-transferable permission to:
+
+a. view the Project's publicly available source code and materials;
+b. Use the workshop for personal learning or live, non-commercial classroom
+   instruction; and
+c. create modifications solely for the purpose of proposing them to Coderling
+   Projects as a contribution through the Project's official GitHub repository.
+
+3. Restrictions
+
+Except with prior written permission from Coderling Projects, you may not:
+
+a. copy, reproduce, republish, upload, post, transmit, or distribute the
+   Project or a substantial part of it;
+b. publish, distribute, sublicense, sell, rent, or otherwise provide modified
+   or derivative versions of the Project;
+c. use the Project or a derivative work for commercial purposes;
+d. remove or alter copyright, attribution, source, or license notices; or
+e. use the Coderling name, branding, or marks in a way that suggests
+   endorsement or affiliation.
+
+The permissions in section 2 do not include hosting a copy of the workshop,
+incorporating its material into another product or course, or distributing
+copies to students. Contact Coderling Projects for permission for those uses.
+
+4. Contributions
+
+By intentionally submitting a contribution to the Project, you represent that
+you have the right to submit it and grant Coderling Projects a perpetual,
+worldwide, irrevocable, non-exclusive, royalty-free license to use, reproduce,
+modify, publish, distribute, sublicense, and relicense that contribution as
+part of or in connection with the Project. This grant does not transfer
+ownership of your contribution.
+
+Do not submit material that you do not have permission to contribute.
+
+5. Third-party material
+
+This license does not grant rights to third-party material. Third-party names,
+links, and attributed source material remain subject to their respective
+rights and terms.
+
+6. Termination
+
+Your permission under this license ends automatically if you breach these
+terms. Sections 3 through 8 survive termination.
+
+7. No warranty
+
+THE PROJECT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NON-INFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY LAW,
+CODERLING PROJECTS WILL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM THE PROJECT OR ITS USE.
+
+8. Other rights
+
+No rights are granted except those expressly stated in this license. Nothing
+in this license limits rights that cannot lawfully be restricted, including
+applicable exceptions and limitations to copyright.
+
+For permissions beyond this license, contact Coderling Projects through the
+Project's official GitHub repository.
