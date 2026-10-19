@@ -73,3 +73,7 @@ The repository’s Settings → Pages screen explicitly displayed “Upgrade or 
 ## Follow-up repository status
 
 After the owner’s update, the repository was observed as Public and Pages allowed branch deployment. The initial restriction recorded above is historical. The owner also enabled browser file uploads.
+
+## Additional workshop
+
+The catch-game source evidence, curriculum, and validation are documented separately in [Catch-game author notes](author-notes-catch-game.md).

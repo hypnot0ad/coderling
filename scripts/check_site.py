@@ -32,12 +32,17 @@ for path,page in pages.items():
         if not target.is_file():errors.append(f'{path.relative_to(ROOT)}: missing {link}')
         elif u.fragment and target in pages and unquote(u.fragment) not in pages[target].ids:
             errors.append(f'{path.relative_to(ROOT)}: missing anchor {link}')
-lessons=DOCS/'workshops/memory-match'
-for path in lessons.glob('*/index.html'):
-    s=path.read_text()
-    for text in ('smart kiddos','l0lIGWz4yKU','Previous','Next','If something goes wrong'):
-        if text not in s:errors.append(f'{path}: missing {text}')
-if len(list(lessons.glob('*/index.html'))) != 8:errors.append('Expected eight lesson stages')
+for slug,creator,video in [('memory-match','smart kiddos','l0lIGWz4yKU'),('catch-game','Scratch Team','7NN5v2wSL4U')]:
+    lessons=DOCS/'workshops'/slug
+    stages=list(lessons.glob('*/index.html'))
+    for path in stages:
+        s=path.read_text()
+        for text in (creator,video,'Previous','Next','If something goes wrong') + (('Predict','Check it works') if slug=='catch-game' else ()):
+            if text not in s:errors.append(f'{path}: missing {text}')
+    if len(stages) != 8:errors.append(f'{slug}: expected eight lesson stages, found {len(stages)}')
+    overview=lessons/'index.html'
+    if not overview.is_file():errors.append(f'{slug}: missing overview')
+    elif slug=='catch-game' and 'credits' not in pages[overview.resolve()].ids:errors.append(f'{slug}: missing source credits')
 if not (DOCS/'.nojekyll').is_file():errors.append('Missing docs/.nojekyll')
 for path,page in pages.items():
     s=path.read_text()
@@ -45,4 +50,4 @@ for path,page in pages.items():
         if text not in s:errors.append(f'{path}: missing feedback control: {text}')
 if not (DOCS/'assets'/'feedback.js').is_file():errors.append('Missing feedback script')
 if errors:print('\n'.join(errors));sys.exit(1)
-print(f'PASS: {len(pages)} HTML pages; internal links, assets, anchors, eight lesson stages, credits and navigation.')
+print(f'PASS: {len(pages)} HTML pages; internal links, assets, anchors, two workshops with eight stages each, credits and navigation.')

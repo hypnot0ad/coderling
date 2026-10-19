@@ -10,11 +10,27 @@
 <a class="skip" href="#main">Skip to lesson</a>
 <header><a class="brand" href="{{ "" | relURL }}">coderling<span>Scratch workshops</span></a><a class="editor" href="https://scratch.mit.edu/projects/editor/">Open Scratch ↗</a></header>
 <div class="shell">
-<nav class="sidebar" aria-label="Workshop steps">
-<p class="eyebrow">MAKE · TEST · EXPLORE</p>
-<a href="{{ "workshops/memory-match/" | relURL }}">Memory match</a>
-<ol>{{ with site.GetPage "/workshops/memory-match" }}{{ range .RegularPages.ByWeight }}<li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} aria-current="page"{{ end }}>{{ .Title }}</a></li>{{ end }}{{ end }}</ol>
+{{ $workshop := false }}
+{{ $catalog := site.GetPage "/workshops" }}
+{{ if and (eq .Section "workshops") (ne .CurrentSection.RelPermalink $catalog.RelPermalink) }}{{ $workshop = .CurrentSection }}{{ end }}
+<nav class="sidebar" aria-label="{{ if $workshop }}Workshop steps{{ else }}Main navigation{{ end }}">
+{{ if $workshop }}
+<a class="back-home" href="{{ site.Home.RelPermalink }}">← Coderling home</a>
+<p class="eyebrow">YOUR WORKSHOP</p>
+<a href="{{ $workshop.RelPermalink }}"{{ if eq .RelPermalink $workshop.RelPermalink }} aria-current="page"{{ end }}>{{ $workshop.Title }}</a>
+<ol>{{ range $workshop.RegularPages.ByWeight }}<li><a href="{{ .RelPermalink }}"{{ if eq .RelPermalink $.RelPermalink }} aria-current="page"{{ end }}>{{ .Title }}</a></li>{{ end }}</ol>
 <p class="small">Take your time. Save at each checkpoint.</p>
+{{ else }}
+<p class="eyebrow">WELCOME TO CODERLING</p>
+<ul class="main-links">
+<li><a href="{{ site.Home.RelPermalink }}"{{ if .IsHome }} aria-current="page"{{ end }}>Welcome</a></li>
+<li><a href="{{ site.Home.RelPermalink }}#our-objectives">Our objectives</a></li>
+<li><a href="{{ site.Home.RelPermalink }}#choose-your-level">Choose your level</a></li>
+<li><a href="{{ site.Home.RelPermalink }}#what-is-scratch">What is Scratch?</a></li>
+<li><a href="{{ $catalog.RelPermalink }}"{{ if eq .RelPermalink $catalog.RelPermalink }} aria-current="page"{{ end }}>Browse workshops</a></li>
+<li><a href="{{ site.Home.RelPermalink }}#credits">Credits</a></li>
+</ul>
+{{ end }}
 </nav>
 <main id="main" tabindex="-1">{{ block "main" . }}{{ end }}
 <aside class="feedback" aria-labelledby="feedback-title">
@@ -31,6 +47,6 @@
 </aside>
 </main>
 </div>
-<footer>Made for curious coders. No account needed. <a href="{{ "workshops/memory-match/#credits" | relURL }}">Workshop credits</a></footer>
+<footer>Made for curious coders. No account needed. <a href="{{ site.Home.RelPermalink }}#credits">Credits</a></footer>
 <script src="{{ "assets/feedback.js" | relURL }}"></script>
 </body></html>

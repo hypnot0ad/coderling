@@ -57,3 +57,13 @@ Copyright © 2026 Coderling Projects. The source is available for inspection, pe
 ## Hosting status observed on 2026-09-08
 
 The initial private-repository Pages restriction was resolved by the owner. The repository is now public and its Pages settings allow branch deployment. The site is configured for `main` → `/docs`.
+
+## Catch the apples (added 19 October 2026)
+
+A 65-minute Scratch 3 workshop for ages 8–15, adapted from Scratch Team’s catch-game tutorial: https://www.youtube.com/watch?v=7NN5v2wSL4U . Creator level because the core introduces a score variable. The setup page bridges editor, sprites, events, sequences, and motion; all other required concepts are taught. No prerequisite workshop is required.
+
+Eight lesson pages are in `content/workshops/catch-game/`. Source evidence and differences are in `author-notes-catch-game.md`. Both workshops appear in the shared navigation. Rebuild source and `docs/` together using the existing commands above. The build was checked with the documented Hugo 0.150.1. Hugo 0.166.0 rejects the existing languageCode setting with --panicOnWarning; use the pinned version for this site. No new dependency or hosting setting is required. Scratch scripts have been logically reviewed but not executed in Scratch.
+
+## Welcome and navigation
+
+The homepage introduces Coderling, its objectives, Starter/Builder/Creator expectations, Scratch, and source credits. Main navigation links to those sections and the workshop catalog. Inside each workshop, the sidebar shows only its own overview and eight lessons, plus a link home. This follows the welcome → browse → focused workshop pattern of Splunk Observability Workshops.

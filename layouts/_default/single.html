@@ -1,1 +1,1 @@
-{{ define "main" }}<article><p class="eyebrow">SCRATCH 3 · MEMORY MATCH</p><h1>{{ .Title }}</h1>{{ .Content }}</article>{{ end }}
+{{ define "main" }}<article><p class="eyebrow">SCRATCH 3 · {{ with .Parent }}{{ .Title }}{{ end }}</p><h1>{{ .Title }}</h1>{{ .Content }}</article>{{ end }}
